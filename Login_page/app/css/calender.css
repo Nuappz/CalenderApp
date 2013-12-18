@@ -1,50 +1,26 @@
 body {
 	background-color:#172221 ;   
-    font-family: 'Open Sans';
-	
+    font-family: 'Open Sans';	
 }
 .container {
     background-color:#FFFFFF;    
-    left: 20%;
-    margin: 15px auto;
-    min-width: 0%;
+    left: 13%;
+    margin: 15px auto;   
     padding: 10px;
     position: absolute;
 }
-
-.logo-row {	
-    border-bottom: 0px dotted #686A6B;	
+.logo-row {	    
     padding-bottom: 5px;
     text-align: center;
 }
-#block {
-    margin: auto auto auto 30px;
-    width: 150%;
-}
-#option {    
-    border-radius: 0 0 25px 25px;
-    height: 50px;
-    overflow: hidden;
-}
 input[type="text"] {
-    border: 1px solid #DFDFDF;
-    cursor: pointer;    
-    font-size: small;
-    height: 32px;
-    margin: 15px;
-    outline: 15px none;
-    padding-left: 40px;
-    position: relative;
-    width: 158px;
-    z-index: 900;
+    border: 1px solid #DFDFDF;    
 }
 .go_button {
 	background: linear-gradient(#04E0CA, #039687) repeat scroll 0 0 rgba(0, 0, 0, 0);
     border: medium none;
     cursor: pointer;
-    height: 30px;
-	left: 33px;
-    margin: 12px;
+    height: 30px;    
     position: relative;
     width: 92px;
     z-index: 900;

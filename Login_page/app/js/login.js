@@ -11,8 +11,8 @@ CalenderApp.config(['$routeProvider',
         templateUrl: 'partials/login.html',
 		
       }).
-	  when('/User_login', {
-        templateUrl: 'partials/User_login.html',
+	  when('/user_login', {
+        templateUrl: 'partials/user_login.html',
 		
       });
        
