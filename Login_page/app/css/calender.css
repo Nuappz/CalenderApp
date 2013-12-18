@@ -3,11 +3,8 @@ body {
     font-family: 'Open Sans';	
 }
 .container {
-    background-color:#FFFFFF;    
-    left: 13%;
-    margin: 15px auto;   
-    padding: 10px;
-    position: absolute;
+    background: #FFFFFF;
+    margin: 20px auto;
 }
 .logo-row {	    
     padding-bottom: 5px;
