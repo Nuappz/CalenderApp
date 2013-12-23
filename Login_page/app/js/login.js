@@ -14,6 +14,10 @@ CalenderApp.config(['$routeProvider',
 	  when('/user_login', {
         templateUrl: 'partials/user_login.html',
 		
+      }).
+	  when('/home_page', {
+        templateUrl: 'partials/home_page.html',
+		
       });
        
      
