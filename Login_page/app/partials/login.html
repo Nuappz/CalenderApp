@@ -9,14 +9,15 @@
 				<h1>School ID</h1>
 			</div>
 			<form class="form-horizontal" role="form">
+			
 				<div class="form-group">					
 					<div class="col-xs-12">
-						<input type="text" class="form-control" required="" id="schoolid" placeholder="School ID">
+						<input type="text" class="form-control" required="" placeholder="School ID" ng-model="schoolid">
 					</div>
 				</div>
 				<div class="form-group">		
 					<div class="col-xs-12">
-						<button type="submit" class="go_button">GO</button>
+						<button type="submit" class="go_button" ng-click="school()">GO</button>
 					</div>
 				</div>	
 				<div class="form-group">
@@ -25,7 +26,8 @@
 							<input type="checkbox">Remember me					
 						</div>
 					</div>
-				</div>
+				</div>				
+			<div class="form-group col-xs-12 alert" ng-bind-html="test"></div>					
 			</form>
 		</div>
 	</body>
