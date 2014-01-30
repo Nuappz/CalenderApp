@@ -1,76 +1,127 @@
 <!DOCTYPE html>
 <html>
-	<head>				
-		<title>Home</title>
+	<head>
+		<meta charset="utf-8">
+		<title>Home Page</title>
+
+		<!-- Sets initial viewport load and disables zooming	-->
+		<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+
+		<!-- Makes your prototype chrome-less once bookmarked to your phone's home screen -->
+		<!--<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+-->
+		<!-- Set Apple icons for when prototype is saved to home screen -->
+		<link rel="apple-touch-icon-precomposed" sizes="114x114" href="touch-icons/apple-touch-icon-114x114.png">
+		<link rel="apple-touch-icon-precomposed" sizes="72x72" href="touch-icons/apple-touch-icon-72x72.png">
+		<link rel="apple-touch-icon-precomposed" sizes="57x57" href="touch-icons/apple-touch-icon-57x57.png">
+
+		<!-- Include the base Snap.js CSS -->
+		<link rel="stylesheet" href="lib/snap/snap.css">
+
+		<!-- Include the compiled Ratchet CSS -->
+		<link rel="stylesheet" href="lib/snap/ratchet.css">
+
+		<!-- Include the compiled Ratchet JS -->
+		<script src="lib/snap/ratchet.js"></script>
+
+		<!-- Intro paragraph styles. Delete once you start using this page -->
+		<style type="text/css">
+			.snap-drawers .list{margin: 0;}
+
+			.welcome {
+				line-height: 1.5;
+				color: #555;
+			}
+			h2{
+				padding: 15px;
+				font-weight: normal;
+				font-size: 36px;
+			}
+		</style>
+
 	</head>
 	<body>
-		<div class="">
-			<div class="container"><!--announcement container-->		
-				<div class="col-xs-12">				
-					<div class=""><!--title-->
-						<h2>Announcement</h2>
-					</div>
-					<div><!--content-->
-						<table class="table table-striped">
-							<tbody>
-								<tr>									
-									<td>
-										<div>
-											<h5>Announcement Title1</h5>
-										</div>							
-										<div>
-											<p>announcement1</p>								
-											<p>date posted</p>
-											<p style="float: right;">									
-												<a href>Read More...</a>
-											</p>
-										</div>
-									</td>									
-								</tr>
-								<tr>
-									<td>
-										<div>
-											<h5>Announcement Title2</h5>
-										</div>
-										<div>
-											<p>announcement2</p>
-											<p>date posted</p>
-											<p style="float: right;">									
-												<a href>Read More...</a>
-											</p>
-										</div>
-									</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>					
-				</div>		
-			</div>
-			<div class="container">
-				<div class="col-xs-12">				
-					<div class="tabbable"> 
-						<ul class="nav nav-tabs">
-							<li class="active">
-								<a href="#firstTab" data-toggle="tab">News</a>
-							</li>
-							<li>
-								<a href="#secondTab" data-toggle="tab">News Letter</a>
-							</li>
-						</ul>
-						<div class="tab-content">
-							<div class="tab-pane active" id="firstTab">
-								<h5>Sample News</h5>
-								<a href>Read More..</a>								
-							</div>
-							<div class="tab-pane" id="secondTab">
-								<h5>News Letter</h5>
-								<a href>Read More...</a>
-							</div>
-						</div>
-					</div>				
-				</div>		
-			</div>	
+	
+	<div class="snap-drawers">
+		<div class="snap-drawer snap-drawer-left" id="left-drawer">
+			<ul class="list">              
+			  <li>SMS</li>			  
+			  <li>NEWS</li>
+			  <li>Events</li>
+			  <li>SETTINGS</li>			  
+			</ul>
 		</div>
-		<script src="bootstrap.js"></script>		
-	</body>
+		<div class="snap-drawer snap-drawer-right" id="right-drawer">
+			<ul class="list">
+			  <li>USER1</li>
+			  <li>USER2</li>
+			  <li>USER3</li>
+			  <li>USER4</li>
+			</ul>
+		</div>
+	</div>
+	
+	<div id="content" class="snap-content">
+	
+		<!-- Make sure all your bars are the first things in your <body> -->
+		
+		<header id="head" class="bar-title">
+			<button class="button" id="toggle-left">Left</button>
+			<h1 class="title">{{schoolname}}</h1>
+			<button class="button" id="toggle-right">Right</button>
+		</header>
+		
+	
+		<!-- Wrap all non-bar HTML in the .content div (this is actually what scrolls) -->
+		<div class="content">
+			<div class="content-padded">
+				<p class="welcome"></p>
+			</div>			
+		</div>
+	</div>
+	
+	<script type="text/javascript">
+	
+		var 
+		
+		// Helper
+		$ = function(id){
+			return document.getElementById(id);
+		},
+		
+		// Instance
+		snapper = new Snap({
+			element: document.getElementById('content')
+		}),
+		
+		// 
+		UpdateDrawers = function(){
+			var state = snapper.state(),
+				towards = state.info.towards,
+				opening = state.info.opening;
+			if(opening=='right' && towards=='left'){
+				$('right-drawer').classList.add('active-drawer');
+				$('left-drawer').classList.remove('active-drawer');
+			} else if(opening=='left' && towards=='right') {
+				$('right-drawer').classList.remove('active-drawer');
+				$('left-drawer').classList.add('active-drawer');
+			}
+		};
+		
+		snapper.on('drag', UpdateDrawers);
+		snapper.on('animating', UpdateDrawers);
+		snapper.on('animated', UpdateDrawers);
+		
+		$('toggle-left').addEventListener('click', function(){
+			snapper.open('left');
+		});
+		
+		$('toggle-right').addEventListener('click', function(){
+			snapper.open('right');
+		});
+		
+	</script>
+	<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>		
+    </body>
 </html>

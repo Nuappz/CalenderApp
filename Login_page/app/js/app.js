@@ -1,11 +1,11 @@
 'use strict';
 
-var CalenderApp = angular.module('CalenderApp', [
+var CalendarApp = angular.module('CalendarApp', [
   'ngRoute',
   'calendarcontroller'
 ]);
 
-CalenderApp.config(['$routeProvider',
+CalendarApp.config(['$routeProvider',
   function($routeProvider ) {
     $routeProvider.
       when('/', {
@@ -18,7 +18,8 @@ CalenderApp.config(['$routeProvider',
 		
       }).
 	  when('/home_page', {
-        templateUrl: 'partials/home_page.html'
+        templateUrl: 'partials/home_page.html',
+		controller:'hmCtrl'
 		
       });
        

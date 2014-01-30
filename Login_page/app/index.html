@@ -1,25 +1,31 @@
 <!doctype html>
-<html lang="en" ng-app="CalenderApp">
-	<head>		
-		<title>Calender</title>
-		<link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css">
-		<link rel="stylesheet" href="css/calender.css">
+<html lang="en" ng-app="CalendarApp">
+	
+	<head>	
+		<meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width" />
+		<title>Calendar</title>
+		<link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css">	
+		
+		<link rel="stylesheet" href="css/calender.css">	
 	</head>
 	<body>
 		<script src="lib/jquery/jquery-1.10.2.min.js"></script>
-		<script src="lib/jquery/jquery-1.10.2.js"></script>	
+		<script src="lib/jquery/jquery-1.10.2.js"></script>
 		<script src="lib/angular/angular.js"></script>  
 		<script src="lib/angular/angular-resource.js"></script>
 		<script src="lib/angular/angular-route.js"></script>
 		<script src="lib/angular/angular-sanitize.js"></script>
 		<script src="lib/bootstrap/js/bootstrap.min.js"></script>
 		<script src="lib/bootstrap/js/bootstrap.js"></script>
-		<script src="lib/angular/angular-css-injector.js"></script>
+		<script src="lib/angular/angular-css-injector.js"></script>		
+
+		<script type="text/javascript" src="lib/snap/snap.js"></script>		
 
 		<script src="js/app.js"></script>
 		<script src="js/controllers.js"></script>
 		
-	
+		
+		
 		<div class="view-container">
 			<div ng-view class="view-frame"></div>
 		</div>
