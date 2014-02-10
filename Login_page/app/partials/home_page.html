@@ -40,16 +40,65 @@
 			}
 		</style>
 
+		<script type="text/javascript" charset="utf-8">
+			scheduler.config.init_date = new Date(2011,5,12);
+			alert("scheduler");
+			dhx.ready(function(){
+		        dhx.ui.fullScreen();
+    			dhx.ui({
+    			   		view: "scheduler",
+					id: "scheduler",
+					container: "schedulerDiv"
+				});
+				
+				$$("scheduler").load("data/mobile.xml","scheduler");
+			});
+		</script>
+		<!--dhtmlx scheduler
+		
+		<script src="lib/scheduler/dhtmlxscheduler.js"></script>
+		
+		<link rel="stylesheet" href="lib/scheduler/app.css">
+		<link rel="stylesheet" href="lib/scheduler/dhtmlxscheduler.css">	-->
+		
+		
+		
+		
 	</head>
 	<body>
 	
+	
+	
+	<div id="content" class="snap-content">
+	
+		<!-- Make sure all your bars are the first things in your <body> -->
+		
+		<header id="head" class="bar-title">
+			<button class="button" id="toggle-left">Left</button>
+			<h1 class="title">{{school}}</h1>
+			<button class="button" id="toggle-right">Right</button>
+		</header>
+		
+	
+		<!-- Wrap all non-bar HTML in the .content div (this is actually what scrolls) -->
+		<div class="content">
+			<div class="content-padded">
+				<!--<p class="welcome">-->
+					
+					<div id="schedulerDiv" class="dhx_cal_container" style="height:500px;width:700px">
+					</div>
+					
+				<!--</p>-->
+			</div>
+		</div>
+	</div>
 	<div class="snap-drawers">
 		<div class="snap-drawer snap-drawer-left" id="left-drawer">
 			<ul class="list">              
 			  <li>SMS</li>			  
-			  <li>NEWS</li>
+			  <li>News</li>
 			  <li>Events</li>
-			  <li>SETTINGS</li>			  
+			  <li>Settings</li>			  
 			</ul>
 		</div>
 		<div class="snap-drawer snap-drawer-right" id="right-drawer">
@@ -61,28 +110,7 @@
 			</ul>
 		</div>
 	</div>
-	
-	<div id="content" class="snap-content">
-	
-		<!-- Make sure all your bars are the first things in your <body> -->
-		
-		<header id="head" class="bar-title">
-			<button class="button" id="toggle-left">Left</button>
-			<h1 class="title">{{schoolname}}</h1>
-			<button class="button" id="toggle-right">Right</button>
-		</header>
-		
-	
-		<!-- Wrap all non-bar HTML in the .content div (this is actually what scrolls) -->
-		<div class="content">
-			<div class="content-padded">
-				<p class="welcome"></p>
-			</div>			
-		</div>
-	</div>
-	
-	<script type="text/javascript">
-	
+	<script type="text/javascript">	
 		var 
 		
 		// Helper

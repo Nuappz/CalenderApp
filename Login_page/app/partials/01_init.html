@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta  name = "viewport" content = "initial-scale = 1.0, maximum-scale = 1.0, user-scalable = no">
+
+		
+
+		<title>Initialization</title>
+		<script type="text/javascript" charset="utf-8">
+			scheduler.config.init_date = new Date(2011,5,12);
+			alert("scheduler");
+			dhx.ready(function(){
+		        dhx.ui.fullScreen();
+    			dhx.ui({
+    			   		view: "scheduler",
+					id: "scheduler"
+				});
+				
+				$$("scheduler").load("data/mobile.xml","scheduler");
+			});
+		</script>
+	</head>
+	<body>
+	   <div id="hell">
+	   </div>
+	</body>
+</html>
