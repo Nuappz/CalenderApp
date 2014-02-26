@@ -6,31 +6,36 @@
 		<meta  name = "viewport" content = "initial-scale = 1.0, maximum-scale = 1.0, user-scalable = no">
 		<title>Calendar</title>
 		<link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css">	
-		
 		<link rel="stylesheet" href="css/calender.css">	
 	</head>
 	<body>
 		<script src="lib/jquery/jquery-1.10.2.min.js"></script>
 		<script src="lib/jquery/jquery-1.10.2.js"></script>
 		<script src="lib/angular/angular.js"></script>  
-		<!--<script src="lib/angular/angular.min.js"></script>-->
+		<script src="lib/angular/angular.min.js"></script>
 		<script src="lib/angular/angular-resource.js"></script>
-		<script src="lib/angular/angular-route.js"></script>
-		<script src="lib/angular/angular-sanitize.js"></script>
+		<script src="lib/angular/angular-route.js"></script>		
 		<script src="lib/bootstrap/js/bootstrap.min.js"></script>
 		<script src="lib/bootstrap/js/bootstrap.js"></script>
+		<!--<script src="lib/ui-bootstrap-tpls-0.6.0.js"></script>-->
+		<script src="lib/ui-bootstrap-tpls-0.10.0.js"></script>	
 			
-
-		<script type="text/javascript" src="lib/snap/snap.js"></script>		
+		<script type="text/javascript" src="lib/snap/snap.js"></script>
+		<script src="lib/angular-webstorage.js">
+		<!-- Include the compiled Ratchet JS -->
+		<script src="lib/snap/ratchet.js"></script>
+		
+				
 
 		<script src="js/app.js"></script>
 		<script src="js/controllers.js"></script>
+		<script src="js/service.js"></script>
 		
 		<script type="text/javascript" src="codebase/dhxscheduler_mobile.js" ></script>
 		
-		<link rel="STYLESHEET" type="text/css" href="codebase/dhxscheduler_mobile.css">
 		
 		<div class="view-container">
+		
 			<div ng-view class="view-frame"></div>
 		</div>
 		

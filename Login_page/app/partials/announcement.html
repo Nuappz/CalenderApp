@@ -1,0 +1,59 @@
+<div ng-controller='announcementCtrl'>		
+	<div class="form-group">
+		<div class="col-xs-12">
+			<button type="submit" class="go_button" ng-click="shw_val='create_anncmnt'">create</button><br>
+		</div>
+	</div>
+	<div class="form-group">
+		<div class="col-xs-12">
+			<button  class="go_button" ng-click="existing_announcement()">view</button>
+		</div>
+	</div>	
+	<div ng-show="shw_val==='create_anncmnt'" class="ng-hide">
+		<div class="form-group">
+			<div class="col-xs-12">
+				<input class="form-control" type="text" placeholder="Subject" ng-model="ancmt_subject">
+			</div>
+		</div>	
+		<div class="form-group">
+			<div class="col-xs-12">
+				<input class="form-control" type="text" placeholder="Posted On" ng-model="ancmt_postedon">
+			</div>
+		</div>			
+		<div class="form-group">
+			<div class="col-xs-12">
+				<textarea class="form-control" placeholder="Message" ngModel="ancmt_message"></textarea>
+			</div>
+		</div>		
+		<div>
+			<button type="submit" class="go_button" ng-click="save_announcement()">Save</button><br>
+		</div>
+	</div>
+	<div ng-show="shw_val==='all_anncmnt'">	
+	<table class="table table-bordered table-striped">			
+		<tbody>
+			<tr ng-repeat="views in view_ancemnt" ng-click="select(views)">
+				<td><div>{{views.Subject}}</div>
+				<div>{{views.PostedOn}}</div></td>	
+			</tr>					
+		</tbody>
+	</table>
+	</div>			
+	<div ng-show="shw_val==='one_anncmnt'" class="ng-hide">
+		<div>
+		<h4>{{Subject}}</h4>
+		</div>
+		<div>
+		{{AnnouncementBy}}		
+		</div>
+		<div>
+		{{SenderName}}		
+		</div>
+		<div>
+		{{Message}}		
+		</div>
+		<div>
+		{{PostedOn}}		
+		</div>
+	</div>
+</div>

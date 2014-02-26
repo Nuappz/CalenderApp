@@ -1,0 +1,27 @@
+<div ng-controller='newsCtrl'>		
+	<div ng-show="nws_val==='all_news'" class="ng-hide">
+	<table class="table table-bordered table-striped">			
+		<tbody>
+			<tr ng-repeat="view in view_news" ng-click="select_news(view)">
+				<td><div>{{view.Title}}</div>
+				<div>{{view.PostedOn}}</div></td>	
+			</tr>					
+		</tbody>
+	</table>
+	</div>	
+	<div ng-show="nws_val==='one_news'" class="ng-hide">
+		<div>
+		<h4>{{Title}}</h4>
+		</div>
+		<div>
+		{{SenderName}}		
+		</div>		
+		<div>
+		{{News}}		
+		</div>
+		<div>
+		{{PostedOn}}		
+		</div>
+	</div>	
+</div>
+	

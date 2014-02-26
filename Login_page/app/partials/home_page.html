@@ -10,7 +10,7 @@
 		<!-- Makes your prototype chrome-less once bookmarked to your phone's home screen -->
 		<!--<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="apple-mobile-web-app-status-bar-style" content="black">
--->
+		-->
 		<!-- Set Apple icons for when prototype is saved to home screen -->
 		<link rel="apple-touch-icon-precomposed" sizes="114x114" href="touch-icons/apple-touch-icon-114x114.png">
 		<link rel="apple-touch-icon-precomposed" sizes="72x72" href="touch-icons/apple-touch-icon-72x72.png">
@@ -22,109 +22,90 @@
 		<!-- Include the compiled Ratchet CSS -->
 		<link rel="stylesheet" href="lib/snap/ratchet.css">
 
-		<!-- Include the compiled Ratchet JS -->
-		<script src="lib/snap/ratchet.js"></script>
+
+		<!--Scheduler -->
+		<link rel="STYLESHEET" type="text/css" href="codebase/dhxscheduler_mobile.css">
 
 		<!-- Intro paragraph styles. Delete once you start using this page -->
 		<style type="text/css">
 			.snap-drawers .list{margin: 0;}
 
 			.welcome {
-				line-height: 1.5;
-				color: #555;
+			line-height: 1.5;
+			color: #555;
 			}
 			h2{
-				padding: 15px;
-				font-weight: normal;
-				font-size: 36px;
+			padding: 15px;
+			font-weight: normal;
+			font-size: 36px;
 			}
 		</style>
-
-		<script type="text/javascript" charset="utf-8">
-			scheduler.config.init_date = new Date(2011,5,12);
-			alert("scheduler");
-			dhx.ready(function(){
-		        dhx.ui.fullScreen();
-    			dhx.ui({
-    			   		view: "scheduler",
-					id: "scheduler",
-					container: "schedulerDiv"
-				});
-				
-				$$("scheduler").load("data/mobile.xml","scheduler");
-			});
-		</script>
-		<!--dhtmlx scheduler
-		
-		<script src="lib/scheduler/dhtmlxscheduler.js"></script>
-		
-		<link rel="stylesheet" href="lib/scheduler/app.css">
-		<link rel="stylesheet" href="lib/scheduler/dhtmlxscheduler.css">	-->
-		
-		
-		
-		
 	</head>
 	<body>
-	
-	
-	
-	<div id="content" class="snap-content">
-	
-		<!-- Make sure all your bars are the first things in your <body> -->
-		
-		<header id="head" class="bar-title">
-			<button class="button" id="toggle-left">Left</button>
-			<h1 class="title">{{school}}</h1>
-			<button class="button" id="toggle-right">Right</button>
-		</header>
-		
-	
-		<!-- Wrap all non-bar HTML in the .content div (this is actually what scrolls) -->
-		<div class="content">
-			<div class="content-padded">
-				<!--<p class="welcome">-->
-					
-					<div id="schedulerDiv" class="dhx_cal_container" style="height:500px;width:700px">
-					</div>
-					
-				<!--</p>-->
+		<div class="snap-drawers">
+			<div class="snap-drawer snap-drawer-left" id="left-drawer">
+				<ul class="list">  
+					<li ng-click="calendar()">Calendar</li>				
+					<li ng-click="gotosms()">SMS</li>					
+					<li ng-click="gotonotes()">Notes</li>
+					<li ng-click="logout()">Logout</li>						
+				</ul>
+			</div>
+			<div class="snap-drawer snap-drawer-right" id="right-drawer">
+				<ul class="list">
+				  <li>USER1</li>
+				  <li>USER2</li>
+				  <li>USER3</li>
+				  <li>USER4</li>
+				</ul>
 			</div>
 		</div>
-	</div>
-	<div class="snap-drawers">
-		<div class="snap-drawer snap-drawer-left" id="left-drawer">
-			<ul class="list">              
-			  <li>SMS</li>			  
-			  <li>News</li>
-			  <li>Events</li>
-			  <li>Settings</li>			  
-			</ul>
+		<div id="content" class="snap-content">
+
+			<!-- Make sure all your bars are the first things in your <body>-->
+
+			<header id="head" class="bar-title">				
+				<button id="toggle-left" class="button">
+				  <span class="glyphicon glyphicon-th-list"></span> 
+				</button>
+				<h1 class="title">{{school}}</h1>
+				<!--<button class="button" ng-click="back()">Back</button>			-->
+				<button class="button" ng-click="gotonews()">
+					<span class="glyphicon glyphicon-list-alt"></span>
+					<span class="iconclr">{{n_cntr}}</span>
+				</button>
+				<button class="button" ng-click="gotoannouncement()">
+					<span class="glyphicon glyphicon-flag"></span>
+					<span class="iconclr">{{cntr}}</span>
+				</button>
+				<button class="button" id="toggle-right">
+					<span class="glyphicon glyphicon-user"></span>
+					</button>
+			</header>
+
+
+			<!-- Wrap all non-bar HTML in the .content div (this is actually what scrolls) -->
+			<div class="content">
+			<div class="slide-animate" ng-include="template"></div>
+			</div>			 					
 		</div>
-		<div class="snap-drawer snap-drawer-right" id="right-drawer">
-			<ul class="list">
-			  <li>USER1</li>
-			  <li>USER2</li>
-			  <li>USER3</li>
-			  <li>USER4</li>
-			</ul>
-		</div>
-	</div>
-	<script type="text/javascript">	
-		var 
 		
-		// Helper
-		$ = function(id){
+
+		<script type="text/javascript">	
+			var 
+
+			// Helper
+			$ = function(id){
 			return document.getElementById(id);
-		},
-		
-		// Instance
-		snapper = new Snap({
+			},
+
+			// Instance
+			snapper = new Snap({
 			element: document.getElementById('content')
-		}),
-		
-		// 
-		UpdateDrawers = function(){
+			}),
+
+			// 
+			UpdateDrawers = function(){
 			var state = snapper.state(),
 				towards = state.info.towards,
 				opening = state.info.opening;
@@ -135,21 +116,20 @@
 				$('right-drawer').classList.remove('active-drawer');
 				$('left-drawer').classList.add('active-drawer');
 			}
-		};
-		
-		snapper.on('drag', UpdateDrawers);
-		snapper.on('animating', UpdateDrawers);
-		snapper.on('animated', UpdateDrawers);
-		
-		$('toggle-left').addEventListener('click', function(){
+			};
+
+			snapper.on('drag', UpdateDrawers);
+			snapper.on('animating', UpdateDrawers);
+			snapper.on('animated', UpdateDrawers);
+
+			$('toggle-left').addEventListener('click', function(){
 			snapper.open('left');
-		});
-		
-		$('toggle-right').addEventListener('click', function(){
+			});
+
+			$('toggle-right').addEventListener('click', function(){
 			snapper.open('right');
-		});
-		
-	</script>
-	<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>		
-    </body>
+			});
+		</script>
+		<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>		
+	</body>
 </html>
